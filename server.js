@@ -32,10 +32,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
 mongoose.connect(process.env.MONGO_URI_CLOUD, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
+
+  app.get("/" ,(req,res)=>{
+    res.send("heloo  to major project ")
+  })
 app.use('/api/auth', authRouter);
 app.use('/api/semesters', semestersRouter);
 app.use('/api/students', studentsRouter);
