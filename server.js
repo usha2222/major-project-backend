@@ -22,7 +22,7 @@ configDotenv();
 if (!process.env.JWT_SECRET) {
   console.warn('Warning: JWT_SECRET is not set in .env file!');
 }
-if (!process.env.MONGO_URI) {
+if (!process.env.MONGO_URI_CLOUD) {
   console.warn('Warning: MONGO_URI is not set in .env file!');
 }
 
@@ -32,7 +32,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI_CLOUD, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
